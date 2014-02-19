@@ -1,10 +1,10 @@
 {
-    "name": "auth",
-    "version": "1.4.1",
+    "name": "checkit",
+    "version": "1.0",
     "desc": "最强大的表单校验组件",
     "tag":"表单,表单验证",
     "author": {
-        "name": "张挺/明河",
+        "name": "张挺",
         "email": "zhangting@taobao.com",
         "page": "https://github.com/czy88840616"
     },

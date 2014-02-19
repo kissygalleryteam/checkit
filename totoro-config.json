@@ -1,4 +1,0 @@
-{
-    "runner":"1.5/test/runner.html",
-    "browsers": ["chrome", "ie/10.0"]
-}
