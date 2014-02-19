@@ -658,32 +658,32 @@ KISSY.add('gallery/checkit/1.0/lib/base',function (S, JSON, Base, Field, Factory
 
 
     /**
-     * @name CheckIt
-     * @class CheckIt组件入口，表明
+     * @name Auth
+     * @class Auth组件入口，表明
      * @version 1.2
      * @param el {selector|htmlElement} form元素
      * @param config {object}
-     * @return CheckIt
+     * @return Auth
      * @constructor
      */
-    var CheckIt = function (el, config) {
+    var Auth = function (el, config) {
         var form = S.get(el),
             self = this;
 
         self._storages = {};
 
         if (!form) {
-            S.log('[CheckIt]:form element not exist');
+            S.log('[Auth]:form element not exist');
         } else {
             self._init(form, S.merge(defaultConfig, config));
         }
 
-        CheckIt.superclass.constructor.call(self);
+        Auth.superclass.constructor.call(self);
 
         return self;
     };
 
-    S.extend(CheckIt, Base, /** @lends Auth.prototype*/ {
+    S.extend(Auth, Base, /** @lends Auth.prototype*/ {
         /**
          * 初始化auth
          * @param el
@@ -844,7 +844,7 @@ KISSY.add('gallery/checkit/1.0/lib/base',function (S, JSON, Base, Field, Factory
  * @author zhangting@taobao.com<zhangting@taobao.com>
  * @module auth
  **/
-KISSY.add('gallery/checkit/1.0/index',function (S, Auth) {
-    return Auth;
+KISSY.add('gallery/checkit/1.0/index',function (S, CheckIt) {
+    return CheckIt;
 }, {requires:['./lib/base']});
 
