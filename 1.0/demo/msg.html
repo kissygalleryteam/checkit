@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>带message的校验</h2>
-<form class="form-horizontal" id="J_Auth" method="post" action="">
+<form class="form-horizontal" id="J_CheckIt" method="post" action="">
     <div class="control-group">
         <label class="control-label" for="user">用户名</label>
         <div class="controls">
@@ -41,8 +41,8 @@
         });
     }
 
-    S.use('gallery/auth/1.4.1/, event, gallery/auth/1.4.1/style.css', function (S, Auth, E) {
-        var auth = new Auth('#J_Auth', {
+    S.use('gallery/check/1.0/, event, gallery/check/1.0/style.css', function (S, CheckIt, E) {
+        var auth = new CheckIt('#J_CheckIt', {
             msg: {
                 tpl: '<div class="msg"><p class="{style}">{msg}</p></div>'
 //这些是默认的，只要写样式就好
@@ -53,7 +53,7 @@
             }
         });
 
-        E.on('#J_Auth', 'submit', function(ev){
+        E.on('#J_CheckIt', 'submit', function(ev){
             ev.preventDefault();
 
             auth.validate(function(result){

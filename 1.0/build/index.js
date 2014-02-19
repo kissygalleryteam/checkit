@@ -658,32 +658,32 @@ KISSY.add('gallery/checkit/1.0/lib/base',function (S, JSON, Base, Field, Factory
 
 
     /**
-     * @name Auth
-     * @class Auth组件入口，表明
+     * @name CheckIt
+     * @class CheckIt组件入口，表明
      * @version 1.2
      * @param el {selector|htmlElement} form元素
      * @param config {object}
-     * @return Auth
+     * @return CheckIt
      * @constructor
      */
-    var Auth = function (el, config) {
+    var CheckIt = function (el, config) {
         var form = S.get(el),
             self = this;
 
         self._storages = {};
 
         if (!form) {
-            S.log('[Auth]:form element not exist');
+            S.log('[CheckIt]:form element not exist');
         } else {
             self._init(form, S.merge(defaultConfig, config));
         }
 
-        Auth.superclass.constructor.call(self);
+        CheckIt.superclass.constructor.call(self);
 
         return self;
     };
 
-    S.extend(Auth, Base, /** @lends Auth.prototype*/ {
+    S.extend(CheckIt, Base, /** @lends Auth.prototype*/ {
         /**
          * 初始化auth
          * @param el

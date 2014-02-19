@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>异步校验</h2>
-<form class="form-horizontal" id="J_Auth" method="post" action="">
+<form class="form-horizontal" id="J_CheckIt" method="post" action="">
     <div class="control-group">
         <label class="control-label" for="user">用户名</label>
         <div class="controls">
@@ -41,8 +41,8 @@
         });
     }
 
-    S.use('gallery/auth/1.4.1/, event', function (S, Auth, E) {
-        var auth = new Auth('#J_Auth');
+    S.use('gallery/checkit/1.0/, event', function (S, CheckIt, E) {
+        var auth = new CheckIt('#J_CheckIt');
 
         //全局注册一个规则
         auth.register('name', function(values, done) {
@@ -62,7 +62,7 @@
             alert(ev.msg);
         });
 
-        E.on('#J_Auth', 'submit', function(ev){
+        E.on('#J_CheckIt', 'submit', function(ev){
             ev.preventDefault();
 
             auth.validate(function(result){
