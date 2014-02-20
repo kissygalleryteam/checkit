@@ -12,7 +12,7 @@ CheckIt增加了异步校验势必会使得原有的API发生变化，作者希�
 
 ##demo汇总
 
-<iframe src="../demo/index.html" frameborder="0"></iframe>
+<iframe src="../demo/index.html" frameborder="0" style="width: 100%;"></iframe>
 
 ##API汇总
 
