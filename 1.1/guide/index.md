@@ -12,15 +12,7 @@ CheckIt增加了异步校验势必会使得原有的API发生变化，作者希�
 
 ##demo汇总
 
-<ul>
-    <li><a href="../demo/first.html">一个简单表单的验证</a></li>
-    <li><a href="../demo/msg.html">带message的校验</a></li>
-    <li><a href="../demo/modifyField.html">修改一个已经存在的field</a></li>
-    <li><a href="../demo/async.html">支持异步校验！</a></li>
-    <li><a href="../demo/checkbox.html">checkbox+添加自定义校验！</a></li>
-    <li><a href="../demo/addfield.html">动态添加一个field</a></li>
-    <li><a href="../demo/all.html">复杂而全面的校验场景</a></li>
-</ul>
+<iframe src="../demo/index.html" frameborder="0"></iframe>
 
 ##API汇总
 
