@@ -1,14 +1,14 @@
 /*
 combined files : 
 
-gallery/checkit/1.0/lib/rule/base
-gallery/checkit/1.0/lib/utils
-gallery/checkit/1.0/lib/rule/rule
-gallery/checkit/1.0/lib/rule/ruleFactory
-gallery/checkit/1.0/lib/msg/base
-gallery/checkit/1.0/lib/field/field
-gallery/checkit/1.0/lib/base
-gallery/checkit/1.0/index
+gallery/checkit/1.1/lib/rule/base
+gallery/checkit/1.1/lib/utils
+gallery/checkit/1.1/lib/rule/rule
+gallery/checkit/1.1/lib/rule/ruleFactory
+gallery/checkit/1.1/lib/msg/base
+gallery/checkit/1.1/lib/field/field
+gallery/checkit/1.1/lib/base
+gallery/checkit/1.1/index
 
 */
 /**
@@ -16,7 +16,7 @@ gallery/checkit/1.0/index
  * @author czy88840616 <czy88840616@gmail.com>
  *
  */
-KISSY.add('gallery/checkit/1.0/lib/rule/base',function(S, Base, undefined) {
+KISSY.add('gallery/checkit/1.1/lib/rule/base',function(S, Base, undefined) {
 
     var DEFAULT_MSG = {
             success:'',
@@ -70,7 +70,7 @@ KISSY.add('gallery/checkit/1.0/lib/rule/base',function(S, Base, undefined) {
  * @author 张挺 <zhangting@taobao.com>
  *
  */
-KISSY.add('gallery/checkit/1.0/lib/utils',function (S, DOM, undefined) {
+KISSY.add('gallery/checkit/1.1/lib/utils',function (S, DOM, undefined) {
 
     var Utils = {
         toJSON:function (cfg) {
@@ -139,7 +139,7 @@ KISSY.add('gallery/checkit/1.0/lib/utils',function (S, DOM, undefined) {
  * @author czy88840616 <czy88840616@gmail.com>
  *
  */
-KISSY.add('gallery/checkit/1.0/lib/rule/rule',function(S, BaseRule, Utils, undefined) {
+KISSY.add('gallery/checkit/1.1/lib/rule/rule',function(S, BaseRule, Utils, undefined) {
 
     /**
      * 属性规则
@@ -186,7 +186,7 @@ KISSY.add('gallery/checkit/1.0/lib/rule/rule',function(S, BaseRule, Utils, undef
  * @author 张挺 <zhangting@taobao.com>
  *
  */
-KISSY.add('gallery/checkit/1.0/lib/rule/ruleFactory',function (S, Base, Rule, undefined) {
+KISSY.add('gallery/checkit/1.1/lib/rule/ruleFactory',function (S, Base, Rule, undefined) {
     var RuleFactory = function () {
         var self = this;
         RuleFactory.superclass.constructor.call(self);
@@ -270,7 +270,7 @@ KISSY.add('gallery/checkit/1.0/lib/rule/ruleFactory',function (S, Base, Rule, un
  * @author czy88840616 <czy88840616@gmail.com>
  *
  */
-KISSY.add('gallery/checkit/1.0/lib/msg/base',function (S, Base) {
+KISSY.add('gallery/checkit/1.1/lib/msg/base',function (S, Base) {
 
     /**
      * msg cls
@@ -343,7 +343,7 @@ KISSY.add('gallery/checkit/1.0/lib/msg/base',function (S, Base) {
  * @author czy88840616 <czy88840616@gmail.com>
  *
  */
-KISSY.add('gallery/checkit/1.0/lib/field/field',function (S, Event, Base, JSON, DOM, Factory, Rule, Msg, Utils, undefined) {
+KISSY.add('gallery/checkit/1.1/lib/field/field',function (S, Event, Base, JSON, DOM, Factory, Rule, Msg, Utils, undefined) {
 
     var EMPTY = '',
         CONFIG_NAME = 'data-valid';
@@ -644,7 +644,7 @@ KISSY.add('gallery/checkit/1.0/lib/field/field',function (S, Event, Base, JSON, 
  * @author czy88840616 <czy88840616@gmail.com>
  * config => https://gist.github.com/czy88840616/8857539
  */
-KISSY.add('gallery/checkit/1.0/lib/base',function (S, JSON, Base, Field, Factory, Utils, undefined) {
+KISSY.add('gallery/checkit/1.1/lib/base',function (S, JSON, Base, Field, Factory, Utils, undefined) {
 
     /**
      * 默认配置
@@ -844,7 +844,7 @@ KISSY.add('gallery/checkit/1.0/lib/base',function (S, JSON, Base, Field, Factory
  * @author zhangting@taobao.com<zhangting@taobao.com>
  * @module auth
  **/
-KISSY.add('gallery/checkit/1.0/index',function (S, CheckIt) {
+KISSY.add('gallery/checkit/1.1/index',function (S, CheckIt) {
     return CheckIt;
 }, {requires:['./lib/base']});
 
