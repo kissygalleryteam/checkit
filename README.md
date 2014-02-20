@@ -1,96 +1,139 @@
-# Auth
+##综述
 
-Auth是非常强大的表单校验组件，Auth在灵活性上是无与伦比，足以满足大部分的表单场景。
+CheckIt是Auth1.4的扩充，增加了异步校验，如果需要旧版本的同学可以继续使用auth1.4
 
-Auth支持异步校验，支持与异步上传组件配合使用。
+CheckIt是为了那些升级到1.5有困难，但是又需要异步校验等新功能的同学而重新开发的。
 
-作者：张挺（V1.4+）| 明河（V1.5+）
+CheckIt增加了异步校验势必会使得原有的API发生变化，作者希望这些变化尽可能的小，以便可以方便的升级。
 
-v1.6beta发布，欢迎试用反馈bug~~~
+同时，完善了的文档，对之前的文档不全本人有非常大的责任，在此抱歉。
 
-v1.4.1发布，支持kissy1.2+ 欢迎试用反馈bug~~~
+此外，CheckIt支持kissy 1.2+的版本，低版本的用户使用没有障碍，之后代码会更精简，只保留核心校验功能，让表单校验更加的纯粹、简单，多谢各位的支持。
 
-## changelog
+##demo汇总
 
-### V1.4.1 by 张挺
+<ul>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/first.html">一个简单表单的验证</a></li>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/msg.html">带message的校验</a></li>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/modifyField.html">修改一个已经存在的field</a></li>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/async.html">支持异步校验！</a></li>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/checkbox.html">checkbox+添加自定义校验！</a></li>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/addfield.html">动态添加一个field</a></li>
+    <li><a href="http://gallery.kissyui.com/checkit/1.0/demo/all.html">复杂而全面的校验场景</a></li>
+</ul>
 
-    [+] 异步校验支持
-    [!] 优化部分代码
+##API汇总
 
-### V1.6 by 明河
+**auth初始化参数**
 
-    [!] 基于kissy1.4
-    [!] 消息改成插件
-    [!]模块优化
-    [!]可以配置消息层模版
-    [!]增加fnWrapper配置
-    [!]Auth新增fnFilter配置
-    [!]Auth新增fnConfig配置
-    [!]优化异步链
+- el {el|htmlElement|String} 表单参数
+- config {Object}
+    - autoBind {Boolean} 是否自动绑定事件
+    - stopOnError {Boolean} 是否当校验碰到错误时停止
+    - exclude {Array} 需要排除的表单name数组，用于暂时不进行校验的表单域，一般情况下无需使用，因为即使创建了表单域，如果没有规则，默认的校验结果都是true
+    - msg {Object} 消息配置
+        - tpl {String} 消息模板，包含style和msg两个默认变量
+        - style {Object} 成功和失败的class
+            - success {String} 成功的class
+            - error {String} 失败的class
+    - rules {Object} 规则默认的默认消息配置
+        - 规则名 {String|Object} 如果只有失败的消息，可以直接使用字符串，如果有成功和失败两个消息，就写成对象
 
-### V1.5 by 明河
+```js
+var auth = new CheckIt('#J_Auth', {
+    "autoBind": true,
+    "stopOnError": false,
+    "msg": {
+        "tpl": '<div class="msg {prefixCls}"><p class="{style}">{msg}</p></div>',
+        "style":{
+            "success":'attention',
+            "error":'error'
+        }
+    },
+    "exclude": [],
+    "rules": {
+        "required":"此项必填",
+        "max": {
+            "success": "范围可用",
+            "error": "超出最大范围"
+        }
+    }
+});
+```
 
-    [!] 重构消息类
-    [!] 改用get和set来获取/设置属性
-    [!] tag config方式更改
-    [!] [Auth] 优先获取name，而不是id
-    [!] [Field] el配置改成target
-    [!] [Field] 修改event配置
-    [!] [Field] validate()方法去掉cfg参数，多个规则逗号隔开
-    [!] [Field] 遍历时排除button元素
-    [!] [Rule] 重构
-    [!] [Rule]equalTo改成equal
-    [!] [ruleFactory] 颠倒规则函数的value和pv
-    [!] [ruleFactory] 不再区分html规则和自定义规则
-    [!] [ruleFactory] 默认规则提取成default.js
-    [!] [Msg] 重构
-    [!] [Msg] msg传递方式优化
-    [!] [Msg] show()方法改变
-    [!] 去掉多余无用的样式，使用stylus改写
-    [!] [Field]修正不存在验证规则时报错的bug
+**CheckIt的方法**
 
-    [+] 新增render()，不再new时马上初始化逻辑
-    [+] 增加validate的同名方法test
-    [+] 继承promise
-    [+] 异步校验支持
-    [+] 增加对uploader的支持
+- register(ruleName, ruleFn) 注册一个全局规则，每个field都可以用，如果仅仅是一个field需要某规则，直接使用field.add即可
+    - ruleName {String} 规则名
+    - ruleFn {Function} 规则内容
 
-    [+] [auth]增加rules属性，用于获取所有的验证规则
-    [+] [auth]增加useId属性，可以强制使用id作为字段标识
-    [+] [auth]增加submitTest配置，用于拦截表单提交，先触发验证
-    [+] [auth]增加fields属性，所有的字段
-    [+] [auth]验证前过滤掉不需要验证的字段
-    [+] [auth]test()支持指定需要验证的字段，比如test("user,email")
-    [+] [auth]增加fieldTarget方法
-    [+] [auth]增加field方法
-    [+] [auth]增加success、error事件
-    [+] [auth]error事件广播出出错的fields
+```js
+//注册同步规则
+auth.register('card', function (value) {
+    return value.length > 3;
+});
 
-    [+] [Field]增加success、error、beforeTest事件
-    [+] [Filed]新增rules属性，用于获取所有的规则
-    [+] [Filed]新增exclude配置，用于排除指定规则验证
-    [+] [Filed]新增host属性
-    [+] [Filed]将Field实例缓存到元素的data-field
-    [+] [Filed]增加name属性
-    [+] [Filed]增加rule方法
+//注册异步规则
+auth.register('name', function(values, done) {
+    KISSY.use('ajax, dom',function(S, IO){
+        //我随便找了个异步地址
+        IO.jsonp('http://suggest.taobao.com/sug', {q:'a'}, function(data){
+            //假装失败了
+            done(false);
+        });
+    });
+});
+```
 
-    [+] [ruleFactory] 支持批量添加验证规则
-    [+] [Rule]规则可以设置默认消息
-    [+] [Rule]required组的处理
-    [+] [Rule]required清理掉空格
-    [+] [Rule]max和min可以处理checkbox的情况
-    [+] [Rule]增加mobile、email、date、number支持
-    [+] [Rule]新增equal-field规则
+- field(name) {String} 返回一个已经存在的field，name为field的id或者name
+- field(el, config) 添加或者修改一个field
+    - el {el|htmlElement|String}
+    - config {Object}
+        - rules 见auth初始化的rules
 
-    [+] [Msg]兼容服务器返回的错误信息
-    [+] [Msg]可以传自定义消息类进去
-    [+] [Msg]可以自动生成消息层
-    [+] [Msg]默认规则增加msg
 
-    [-] 删除rule/base
-    [-] 删除propertyRule
-    [-] 删除lib/base
+- validate(callback) 校验auth里所有的field
+    - callback {Function} 有一个result参数，用于取到返回的结果
 
-### V1.4
+```js
+auth.validate(function(result){
+    if(result) {
+        //TODO
+    } else {
+        alert('校验不通过');
+    }
+});
+```
 
-    [!] 从butterfly中迁移到新的gallery
+**CheckIt的事件**
+
+- validate 校验事件
+    - ev.result {Boolean}
+    - lastField {FieldObject} field对象，最后一个校验的field
+
+```js
+auth.on('validate', function(ev) {
+    console.log(ev.result);
+});
+```
+
+**CheckIt的属性**
+
+- result {Boolean} 最近一次的校验结果
+- cfg {Object} 当前的配置信息
+
+```js
+auth.get('result')
+auth.get('cfg')
+```
+
+##代码变化汇总
+
+- 把propertyRule和Rule统一成了新的Rule对象
+- CheckIt的validate方法不再返回校验结果，改成通过回调函数返回
+- field的validate方法不返回校验结果，统一使用事件监听的方式
+- 去除了field在validate时的参数传递
+- rule的规则函数添加最后一个异步参数，但是保留同步返回的方式
+- 现在hidden、submit、button、reset等表单将不会触发校验
+- 去除了checkit、field和rule的“beforeValidate”和“afterValidate”事件
+- 去除CheckIt.Field的暴露接口，直接使用check.field来创建和修改field

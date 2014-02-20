@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/??css/dpl/base-min.css,css/dpl/forms-min.css,button/assets/dpl-min.css">
 </head>
 <body>
-<h2>带message的校验</h2>
+<h2>验证的事件</h2>
 <form class="form-horizontal" id="J_CheckIt" method="post" action="">
     <div class="control-group">
         <label class="control-label" for="user">用户名</label>
         <div class="controls">
-            <input type="text" class="input-xlarge" id="user" required  data-valid="{required:'请填写用户名'}">
+            <input type="text" class="input-xlarge" id="user" required>
         </div>
     </div>
     <div class="form-actions">
@@ -41,25 +41,18 @@
         });
     }
 
-    S.use('gallery/checkit/1.0/, event, gallery/checkit/1.0/style.css', function (S, CheckIt, E) {
-        var auth = new CheckIt('#J_CheckIt', {
-            msg: {
-                tpl: '<div class="msg"><p class="{style}">{msg}</p></div>'
-//这些是默认的，只要写样式就好
-//                style: {
-//                    success: 'ok',
-//                    error: 'error'
-//                }
-            }
-        });
+    S.use('gallery/checkit/1.1/, event', function (S, CheckIt, E) {
+        var auth = new CheckIt('#J_CheckIt');
 
         E.on('#J_CheckIt', 'submit', function(ev){
             ev.preventDefault();
 
             auth.validate(function(result){
                 if(result) {
-                    //提交表单
+                    alert(result);
                     ev.target.submit();
+                } else {
+                    alert('校验不通过');
                 }
             });
         });

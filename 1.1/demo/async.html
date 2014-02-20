@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/??css/dpl/base-min.css,css/dpl/forms-min.css,button/assets/dpl-min.css">
 </head>
 <body>
-<h2>修改一个已经存在的field</h2>
+<h2>异步校验</h2>
 <form class="form-horizontal" id="J_CheckIt" method="post" action="">
     <div class="control-group">
         <label class="control-label" for="user">用户名</label>
         <div class="controls">
-            <input type="text" class="input-xlarge" id="user" required>
+            <input type="text" class="input-xlarge" id="user" value="test" required>
         </div>
     </div>
     <div class="form-actions">
@@ -41,27 +41,25 @@
         });
     }
 
-    S.use('gallery/checkit/1.0/, event, gallery/checkit/1.0/style.css', function (S, CheckIt, E) {
-        var auth = new CheckIt('#J_CheckIt', {
-            msg: {
-                tpl: '<div class="msg under"><p class="{style}">{msg}</p></div>'
-            }
+    S.use('gallery/checkit/1.1/, event', function (S, CheckIt, E) {
+        var auth = new CheckIt('#J_CheckIt');
+
+        //全局注册一个规则
+        auth.register('name', function(values, done) {
+            KISSY.use('ajax, dom',function(S, IO){
+                //我随便找了个异步地址
+                IO.jsonp('http://suggest.taobao.com/sug', {q:'a'}, function(data){
+                    //假装失败了
+                    done(false);
+                });
+            });
         });
 
-        auth.field('#user', {
-            rules: {
-                required: '请填写用户名'
-            }
-        });
-
-        //初始化就执行校验
-        auth.validate();
-
-        //第一次校验过后修改文案，两种方式都可以修改
-        auth.field('user').config({
-            rules: {
-                required: '请再一次填写用户名'
-            }
+        //添加规则
+        auth.field('user').add("name", {
+            msg: '测试异步错误消息'
+        }).on('validate', function(ev) {
+            alert(ev.msg);
         });
 
         E.on('#J_CheckIt', 'submit', function(ev){
@@ -69,6 +67,8 @@
 
             auth.validate(function(result){
                 if(result) {
+                    alert(result);
+                } else {
                     alert(result);
                 }
             });

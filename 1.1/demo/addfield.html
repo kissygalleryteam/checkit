@@ -8,24 +8,11 @@
     <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/??css/dpl/base-min.css,css/dpl/forms-min.css,button/assets/dpl-min.css">
 </head>
 <body>
-<h2>checkbox+添加自定义校验</h2>
+<h2>动态添加一个field</h2>
 <form class="form-horizontal" id="J_CheckIt" method="post" action="">
     <div class="control-group">
-        <label class="control-label">爱好</label>
-
-        <div class="controls">
-            <label class="checkbox inline">
-                <input class="text" type="checkbox" name="interest" value="option1">
-                爬山
-            </label>
-            <label class="checkbox inline">
-                <input class="text" type="checkbox" name="interest" value="option2">
-                游泳
-            </label>
-            <label class="checkbox inline">
-                <input class="text" type="checkbox" name="interest" id="interest" value="option3" required data-valid="{required:'必填'}">
-                旅游
-            </label>
+        <label class="control-label" for="user">用户名</label>
+        <div class="controls" id="wrap">
         </div>
     </div>
     <div class="form-actions">
@@ -53,26 +40,20 @@
         });
     }
 
-    S.use('gallery/checkit/1.0/, event, gallery/checkit/1.0/style.css', function (S, CheckIt, E) {
+    S.use('gallery/checkit/1.1/, event, gallery/checkit/1.1/style.css', function (S, CheckIt, E) {
         var auth = new CheckIt('#J_CheckIt', {
             msg: {
-                tpl: '<div class="msg under"><p class="{style}">{msg}</p></div>',
-                style: {
-                    success: 'ok',
-                    error: 'error'
-                }
+                tpl: '<div class="msg under"><p class="{style}">{msg}</p></div>'
             }
         });
 
-        auth.register('moreselect', function (values) {
-            return values.length > 1;
+        S.one('#wrap').append('<input type="text" class="input-xlarge" id="user" required data-valid="{required:\'此项必填\'}">');
+
+        auth.field('#user', {
+            rules: {
+                required: '请填写用户名'
+            }
         });
-
-        auth.field('interest').add("moreselect", '必须选择超过1个');
-
-//        auth.field('interest').add("moreselect", {
-//            error: '必须选择超过1个'
-//        });
 
         E.on('#J_CheckIt', 'submit', function(ev){
             ev.preventDefault();
