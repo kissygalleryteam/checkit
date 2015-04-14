@@ -1,4 +1,4 @@
-##综述
+## 综述
 
 CheckIt是Auth1.4的扩充，增加了异步校验，如果需要旧版本的同学可以继续使用auth1.4
 
@@ -10,7 +10,7 @@ CheckIt增加了异步校验势必会使得原有的API发生变化，作者希�
 
 此外，CheckIt支持kissy 1.2+的版本，低版本的用户使用没有障碍，之后代码会更精简，只保留核心校验功能，让表单校验更加的纯粹、简单，多谢各位的支持。
 
-##demo汇总
+## demo汇总
 
 <ul>
     <li><a href="http://gallery.kissyui.com/checkit/1.1/demo/first.html">一个简单表单的验证</a></li>
@@ -22,7 +22,7 @@ CheckIt增加了异步校验势必会使得原有的API发生变化，作者希�
     <li><a href="http://gallery.kissyui.com/checkit/1.1/demo/all.html">复杂而全面的校验场景</a></li>
 </ul>
 
-##API汇总
+## API汇总
 
 **auth初始化参数**
 
@@ -127,7 +127,7 @@ auth.get('result')
 auth.get('cfg')
 ```
 
-##代码变化汇总
+## 代码变化汇总
 
 - 把propertyRule和Rule统一成了新的Rule对象
 - CheckIt的validate方法不再返回校验结果，改成通过回调函数返回
