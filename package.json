@@ -1,11 +1,29 @@
 {
-    "name": "select",
-    "version": "1.4.0",
+    "name": "checkit",
+    "version": "1.1.1",
     "devDependencies": {
-        "grunt-contrib-uglify": "~0.2.0",
-        "grunt": "~0.4.1",
-        "grunt-kmc": "~0.1.1",
-        "grunt-contrib-cssmin": "~0.6.0",
-        "grunt-contrib-copy":"~0.4.0"
+        "bufferstreams": "0.0.2",
+        "gulp": "^3.8.7",
+        "gulp-copy": "0.0.2",
+        "gulp-filter": "^1.0.2",
+        "gulp-kclean": "1.0.3",
+        "gulp-kmc": "1.0.24",
+        "gulp-less": "^1.3.5",
+        "gulp-mini-css": "0.0.3",
+        "gulp-minify": "0.0.5",
+        "gulp-minify-css": "^0.3.11",
+        "gulp-rename": "^1.2.0",
+        "gulp-uglify": "^1.0.1",
+        "gulp-util": "^3.0.0",
+        "gulp-xtemplate": "^1.2.2",
+        "memory-cache": "0.0.5",
+        "xtemplate": "3.3.3"
+    },
+    "desc": "比Auth轻量级的表单校验组件",
+    "tag":"表单,表单验证",
+    "author": {
+        "name": "张挺",
+        "email": "zhangting@taobao.com",
+        "page": "https://github.com/czy88840616"
     }
 }
