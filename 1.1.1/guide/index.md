@@ -14,6 +14,13 @@ CheckIt增加了异步校验势必会使得原有的API发生变化，作者希�
 
 <iframe src="../demo/index.html" frameborder="0" style="width: 100%;"></iframe>
 
+## 初始化组件
+
+    S.use('kg/checkit/1.1.1/index', function (S, Checkit) {
+         var checkit = new Checkit();
+    })
+
+
 ## API汇总
 
 **auth初始化参数**

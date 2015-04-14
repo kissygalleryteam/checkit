@@ -1,0 +1,13 @@
+{
+    "name": "checkit",
+    "version": "1.1.1",
+    "main": "index.js",
+    "ignore": [
+        "**/*",
+        "!index.js",
+        "!index.css",
+        "!lib/**/*"
+    ],
+    "dependencies": {
+    }
+}

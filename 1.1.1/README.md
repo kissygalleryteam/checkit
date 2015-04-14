@@ -1,4 +1,4 @@
-## 综述
+## checkit
 
 CheckIt是Auth1.4的扩充，增加了异步校验，如果需要旧版本的同学可以继续使用auth1.4
 
@@ -137,3 +137,9 @@ auth.get('cfg')
 - 现在hidden、submit、button、reset等表单将不会触发校验
 - 去除了checkit、field和rule的“beforeValidate”和“afterValidate”事件
 - 去除CheckIt.Field的暴露接口，直接使用check.field来创建和修改field
+
+## changelog
+
+### V1.1.1
+
+    [!] 重新build
